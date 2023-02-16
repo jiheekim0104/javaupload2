@@ -1,0 +1,16 @@
+package javahigh05;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class TreeSetEx01 {
+
+	public static void main(String[] args) {
+		Set treeSet = new TreeSet<Interger>();
+		
+		treeSet.add(4);
+		
+
+	}
+
+}

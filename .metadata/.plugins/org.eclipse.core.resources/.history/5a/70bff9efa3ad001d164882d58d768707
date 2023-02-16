@@ -1,0 +1,17 @@
+package javahigh05;
+
+import java.util.TreeMap;
+
+public class TreeMapEx_alone {
+
+	public static void main(String[] args) {
+		//부서 키/ 사원 벨류
+		TreeMap<String, String > company = new TreeMap<String, String>();
+		
+		company.put("강정호", "영업부");
+		company.put("김강인", "홍보부");
+		company.put("김영자", "기획부");
+
+	}
+
+}

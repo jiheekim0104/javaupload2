@@ -1,0 +1,29 @@
+package javahighEx04;
+
+public class Person implements Comparable<Person>{
+	// imple 안하면 , 어떤걸 기준으로해서 넣을지 몰라서 예외발생함
+	private String name;
+	private int age;
+	
+	public Person(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	
+	
+}

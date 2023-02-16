@@ -1,0 +1,9 @@
+package javahighEx04;
+
+public class Comparable {
+	String name= "±èÁöÈñ";
+	Integer score = 100;
+	Double rate = 3.14;
+	
+	
+}
