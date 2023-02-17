@@ -1,0 +1,17 @@
+package javahighEx05;
+
+import java.util.TreeSet;
+
+public class ComparatorEx05 {
+	public static void main(String[] args) {
+		TreeSet<Fruit> fruitTreeSet = new TreeSet<Fruit>(new FruitComparator());
+		
+		fruitTreeSet.add(new Fruit("포도", 3000));
+		fruitTreeSet.add(new Fruit("수박", 10000));
+		fruitTreeSet.add(new Fruit("딸기", 6000));
+		fruitTreeSet.add(new Fruit("배", 3000));
+		fruitTreeSet.add(new Fruit("샤인머스켓", 8000));
+		
+		
+	}
+}

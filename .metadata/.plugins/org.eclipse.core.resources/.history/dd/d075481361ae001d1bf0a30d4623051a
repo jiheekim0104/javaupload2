@@ -1,0 +1,8 @@
+package javahighEx05;
+
+public class Data {
+	private String attach;//소속
+	private String position; //위치
+	private Integer sale; //판매실적
+	
+}

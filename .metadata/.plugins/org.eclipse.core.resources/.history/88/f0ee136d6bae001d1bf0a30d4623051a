@@ -1,0 +1,245 @@
+package com.service;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import com.element.ClassRoom;
+import com.element.ReportCard;
+import com.element.Student;
+import com.Academy;
+
+public class ReportCardService {
+
+	private static final int COMMAND_REPORT_CARD_WRITE = 1;
+	private static final int COMMAND_REPORT_CARD_READ_ONE_BY_STUDENT_AND_MONTH = 2;
+	private static final int COMMAND_REPORT_CARD_READ_BY_STUDENT = 3;
+	private static final int COMMAND_REPORT_CARD_READ_BY_MONTH = 4;
+	private static final int COMMAND_REPORT_CARD_READ_BY_CLASSNAME = 5;
+	private static final int COMMAND_REPORT_CARD_EDIT = 6;
+	private static final int COMMAND_BREAK = 0;
+
+	public Academy academy;
+	public List<ReportCard> reportCards;
+	public ReportCardService(Academy academy) {
+		this.academy = academy;
+		this.reportCards = new LinkedList<>();
+	}
+
+	public void init() {
+	}
+
+	public void service() {
+		int command;
+		Student student;
+		int month;
+		ReportCard reportCard = null;
+		List<ReportCard> reportCards = null;
+		boolean isClosed = false;
+		while (!isClosed) {
+			System.out.println("메인>>성적----------------------");
+			System.out.println("1.성적입력 2.학생명+월 3.학생명 4.월별");
+			System.out.println("5.반별 6.성적수정 0.이전메뉴로");
+			System.out.println("-----------------------------");
+			System.out.print("선택>");
+			command = academy.getInteger();
+			switch (command) {
+			case COMMAND_REPORT_CARD_WRITE:
+				System.out.println("학생명: ");
+				student = academy.studentService.getStudent(academy.getString());
+				if (student == null)
+					System.out.println("검색하신 이름은 없는 이름입니다.");
+				else {
+					reportCard = new ReportCard(student);
+					System.out.println("월: ");
+					reportCard.month = academy.getInteger();
+					System.out.println("국어: ");
+					reportCard.korean = academy.getInteger();
+					System.out.println("수학: ");
+					reportCard.math = academy.getInteger();
+					System.out.println("영어: ");
+					reportCard.english = academy.getInteger();
+					System.out.println("탐구1: ");
+					reportCard.add1 = academy.getInteger();
+					System.out.println("탐구2: ");
+					reportCard.add2 = academy.getInteger();
+					this.reportCards.add(reportCard);
+				}
+
+				break;
+
+			case COMMAND_REPORT_CARD_READ_ONE_BY_STUDENT_AND_MONTH:
+				System.out.println("학생명: ");
+				student = academy.studentService.getStudent(academy.getString());
+				if (student == null)
+					System.out.println("검색하신 이름은 없는 이름입니다.");
+				else {
+					System.out.println("월: ");
+					month = academy.getInteger();
+					reportCard = getReportCard(student, month);
+				}
+				PrintHelper.print(reportCard);
+				break;
+
+			case COMMAND_REPORT_CARD_READ_BY_STUDENT:
+				System.out.println("학생명: ");
+				student = academy.studentService.getStudent(academy.getString());
+				if (student == null)
+					System.out.println("검색하신 이름은 없는 이름입니다.");
+				else {
+					reportCards = getReportCards(student, null);
+					System.out.println(reportCards);		
+				}
+				PrintHelper.print(reportCards);
+				break;
+			case COMMAND_REPORT_CARD_READ_BY_MONTH:
+				System.out.println("월: ");
+				month = academy.getInteger();
+				reportCards = getReportCards(null, month);
+				System.out.println(reportCards);
+				break;
+
+			case COMMAND_REPORT_CARD_READ_BY_CLASSNAME:
+				serviceReportCard();
+
+			case COMMAND_REPORT_CARD_EDIT:
+				System.out.println("학생명: ");
+				student = academy.studentService.getStudent(academy.getString());
+				if (student == null)
+					System.out.println("검색하신 이름은 없는 이름입니다.");
+				else {
+					System.out.println("월: ");
+					month = academy.getInteger();
+					reportCard = getReportCard(student, month);
+					if (reportCard == null)
+						System.out.println("입력하신 학생의 해당 월 성적은 입력되지않았습니다.");
+					else if (reportCard.isDeleted)
+						System.out.println("입력하신 학생의 성적은 이미 삭제되었습니다.");
+					else {
+						System.out.println("월: ");
+						reportCard.month = academy.getInteger();
+						System.out.println("국어: ");
+						reportCard.korean = academy.getInteger();
+						System.out.println("수학: ");
+						reportCard.math = academy.getInteger();
+						System.out.println("영어: ");
+						reportCard.english = academy.getInteger();
+						System.out.println("탐구1: ");
+						reportCard.add1 = academy.getInteger();
+						System.out.println("탐구2: ");
+						reportCard.add2 = academy.getInteger();
+
+					}
+				}
+				break;
+			case COMMAND_BREAK:
+				isClosed = true;
+				break;
+
+			default:
+				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+			}
+		}
+	}
+
+	
+	private void serviceReportCard() {
+		int command;
+		boolean isClosed = false;
+		while (!isClosed) {
+			System.out.println("*****************************");
+			System.out.println("1."+academy.classRoomService.classRooms.get(0).className+" 2."+academy.classRoomService.classRooms.get(1).className+" 3."+academy.classRoomService.classRooms.get(2).className+" 4."+academy.classRoomService.classRooms.get(3).className);
+			System.out.println("*****************************");
+			System.out.print("선택>");
+			command = academy.getInteger();
+			switch (command) {
+			case 1:
+				//일단 지금 입력된 성적에서 과목별 성적 평균부터 생각해보자!
+				int sum =0;
+				int j = 0; //수능 , 월
+				System.out.println(academy.classRoomService.classRooms.get(0).students.size());
+				System.out.println(academy.classRoomService.classRooms.get(1).students.size());
+				System.out.println(academy.classRoomService.classRooms.get(2).students.size());
+				System.out.println(academy.classRoomService.classRooms.get(3).students.size());
+				for(int i=0;i<academy.classRoomService.classRooms.get(0).students.size();i++) {
+					System.out.println(academy.classRoomService.classRooms.get(0).students.get(i).name);
+				// 왜 이상하게뜨지 ㅇㅅㅇ;;;;;;;;;;;;
+				// 성적으로는 어떻게 연결하지?
+			
+				}
+				double avg = sum / academy.classRoomService.classRooms.get(0).students.size();
+				
+				//이전달 과목별 성적 평균
+				//이번달 과목별 성적 평균 
+				//최고 성적 평균
+				//최저 성적 평균 
+				break;
+			case 2:	break;
+			case 3:	break;
+			case 4:	break;
+			case 0:	
+				isClosed = true;
+				break;
+			default:
+				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+			}
+		}
+	}
+
+	public ReportCard getReportCard(Student student, Integer month) {
+		return getReportCard(student, month, false);
+	}
+
+	public ReportCard getReportCard(Student student, Integer month, boolean includeDeleted) {
+		ReportCard result = null;
+		for (ReportCard reportCard : reportCards) {
+			if (includeDeleted && reportCard.isDeleted)
+				continue;
+			if (student != null && reportCard.student != student)
+				continue;
+			if (month != null && reportCard.month != month)
+				continue;
+			result = reportCard;
+		}
+		return result;
+	}
+
+	public List<ReportCard> getReportCards(Student student, Integer month) {
+		return getReportCards(student, month, false);
+	}
+
+	public List<ReportCard> getReportCards(Student student, Integer month, boolean includeDeleted) {
+		LinkedList<ReportCard> reportCards = new LinkedList<>();
+		for (ReportCard reportCard : reportCards) {
+			if (!includeDeleted && reportCard.isDeleted)
+				continue;
+			if (student != null && reportCard.student != student)
+				continue;
+			if (month != null && reportCard.month != month)
+				continue;
+			reportCards.addFirst(reportCard);
+		}
+		return reportCards;
+	}
+
+	public ReportCard addFilter(Student student) {
+		ReportCard reportCard = new ReportCard(student);
+		System.out.print("국어: ");
+		reportCard.korean = academy.getScoreInteger();
+		System.out.print("수학: ");
+		reportCard.math = academy.getScoreInteger();
+		System.out.print("영어: ");
+		reportCard.english = academy.getScoreInteger();
+		System.out.print("탐구1: ");
+		reportCard.add1 = academy.getScoreInteger();
+		System.out.print("탐구2: ");
+		reportCard.add2 = academy.getScoreInteger();
+		return reportCard;
+	}
+
+	public void add(Student student, ReportCard reportCard) {
+		reportCards.add(reportCard);
+		reportCard.student = student;
+		student.subjectBestReportCard(student.name, reportCard); // 마지막 성적까지 반영되어서.. ㅠㅠ add하기전에 최고성적이 남아있어야함 ㅇㅇ
+	}
+
+}

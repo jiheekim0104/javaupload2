@@ -1,0 +1,24 @@
+package javahighEx05;
+
+import java.util.Set;
+import java.util.TreeMap;
+
+public class CompanyMain {
+
+	public static void main(String[] args) {
+		TreeMap<String, Data> companyTreeMap = new TreeMap<String, Data>();
+		
+		companyTreeMap.put("강북영업", new Data("서울본부", "백화점", 4460));
+		companyTreeMap.put("강서영업", new Data("서울본부", "쇼핑몰", 6800));
+		companyTreeMap.put("강남영업", new Data("서울본부", "백화점", 5580));
+		companyTreeMap.put("강동영업", new Data("서울본부", "쇼핑몰", 3560));
+		
+		Set<String> companyKeySet = companyTreeMap.keySet();
+		for(String companyName : companyKeySet) {
+			Data companyAddr = companyTreeMap.get(companyKeySet);
+			System.out.println(companyName + " " + companyTreeMap.get(companyKeySet));
+		}
+
+	}
+
+}
