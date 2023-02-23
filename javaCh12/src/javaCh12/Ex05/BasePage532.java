@@ -1,5 +1,6 @@
 package javaCh12.Ex05;
 
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,9 +14,12 @@ public class BasePage532 {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:MM:ss");
 		System.out.println(sdf.format(date));
 	
-		sdf = new SimpleDateFormat("yyyy³â MM¿ù ddÀÏ HH½Ã mmºÐ ssÃÊ");
+		sdf = new SimpleDateFormat("yyyyï¿½ï¿½ MMï¿½ï¿½ ddï¿½ï¿½ HHï¿½ï¿½ mmï¿½ï¿½ ssï¿½ï¿½");
 		System.out.println(sdf.format(date));
 		
+		 System.out.println(String.format("file.encoding: %s", System.getProperty("file.encoding")));
+         System.out.println(String.format("defaultCharset: %s", Charset.defaultCharset().name()));
+	
 		
 	}
 	

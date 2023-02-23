@@ -1,9 +1,0 @@
-package javahighEx04;
-
-public class Comparable implements Comparable<T>{
-	String name= "±èÁöÈñ";
-	Integer score = 100;
-	Double rate = 3.14;
-	
-	
-}

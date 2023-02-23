@@ -1,7 +1,0 @@
-package javahighEx04;
-
-public class Comparable {
-	String name= "±èÁöÈñ";
-	Integer score = 100;
-	
-}
