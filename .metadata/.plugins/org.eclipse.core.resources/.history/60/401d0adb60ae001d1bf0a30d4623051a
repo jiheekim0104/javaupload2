@@ -1,6 +1,0 @@
-package javahighEx05;
-
-public class Company {
-	//부서명 키  소속 매장 판매 베률 
-	private String department;
-}
