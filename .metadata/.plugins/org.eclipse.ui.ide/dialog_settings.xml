@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\webStudyB\study\javaAloneEx"/>
 			<item value="C:\webStudyB\study\Academy management"/>
 			<item value="C:\webStudyB\study\java_study"/>
 			<item value="C:\webStudyB\study\java_study2\Academy management"/>

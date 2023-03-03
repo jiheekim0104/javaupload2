@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.annotation.Retention"/>
-    <fullyQualifiedTypeName name="java.lang.annotation.RetentionPolicy"/>
-    <fullyQualifiedTypeName name="javaCh12.Ex08.Service"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
-    <fullyQualifiedTypeName name="javaCh12.Ex08.PrintAnnotation"/>
-    <fullyQualifiedTypeName name="java.util.HashSet"/>
-    <fullyQualifiedTypeName name="javaCh12.q5.Student"/>
-    <fullyQualifiedTypeName name="javaCh12.q6.Member"/>
-    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
-    <fullyQualifiedTypeName name="javaCh12.q10.StringBuilder"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="java.time.temporal.ChronoUnit"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
@@ -56,8 +44,20 @@
     <fullyQualifiedTypeName name="javaCh14.Chicken"/>
     <fullyQualifiedTypeName name="javaCh14.Fruit"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.lang.Runnable"/>
     <fullyQualifiedTypeName name="javaCh14.PhoneCall"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="javaCh16.Ex6.Person"/>
+    <fullyQualifiedTypeName name="javaCh16.Ex6.Creatable1"/>
+    <fullyQualifiedTypeName name="javaCh16.Ex6.Creatable2"/>
+    <fullyQualifiedTypeName name="javaCh16.Ex6.Member"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="java.lang.Runnable"/>
+    <fullyQualifiedTypeName name="javaCh16.q5.Button"/>
+    <fullyQualifiedTypeName name="javaCh16.q5.Button.ClickListener"/>
+    <fullyQualifiedTypeName name="java.util.function.Function"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="javaCh16.q6.Function"/>
+    <fullyQualifiedTypeName name="javaCh16.q7.Operator"/>
+    <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
+    <fullyQualifiedTypeName name="javaCh16.q8.Function"/>
+    <fullyQualifiedTypeName name="javaCh16.q8.Student"/>
 </qualifiedTypeNameHistroy>
